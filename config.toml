@@ -1,5 +1,12 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Engelsystem Documentation"
 theme = "learn"
+
+[params]
+themeVariant = "blue"
+editURL = "https://github.com/engelsystem/engelsystem-doc/tree/master/content"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
 
