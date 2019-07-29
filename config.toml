@@ -1,11 +1,11 @@
 baseURL = "https://engelsystem.de/doc/"
 languageCode = "en-us"
-title = "Engelsystem Documentation"
+title = "Engelsystem documentation"
 theme = "learn"
 
 [params]
 themeVariant = "blue"
-editURL = "https://github.com/engelsystem/engelsystem-doc/tree/master/content"
+editURL = "https://github.com/engelsystem/engelsystem-doc/tree/master/content/"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
