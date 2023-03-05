@@ -6,9 +6,28 @@ theme = "learn"
 [params]
 themeVariant = "blue"
 editURL = "https://github.com/engelsystem/engelsystem-doc/tree/main/content/"
+custom_css = [ "engelsystem.css" ]
+titleSeparator = "-"
+disableLandingPageButton = true
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[[menu.shortcuts]]
+name = "<i class='icon-icon_angel'></i> Website"
+url = "https://engelsystem.de"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Engelsystem"
+identifier = "ds"
+url = "https://github.com/engelsystem/engelsystem"
+weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-github'></i> Documentation"
+url = "https://github.com/engelsystem/engelsystem-doc"
+weight = 30

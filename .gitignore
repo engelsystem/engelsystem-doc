@@ -1,1 +1,19 @@
-public
+# Generic cache files
+*~
+.~*
+*.tmp
+*.temp
+*.DS_Store
+.*.swp
+*.out
+*.cache
+Thumbs.db
+
+# IDE files
+/.idea/
+
+# Build files
+/.hugo_build.lock
+
+# Project files
+/public/
