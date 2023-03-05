@@ -5,8 +5,10 @@ theme = "learn"
 
 [params]
 themeVariant = "blue"
-editURL = "https://github.com/engelsystem/engelsystem-doc/tree/master/content/"
+editURL = "https://github.com/engelsystem/engelsystem-doc/tree/main/content/"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
+[markup.goldmark.renderer]
+  unsafe = true
