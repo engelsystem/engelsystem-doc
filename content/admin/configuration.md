@@ -6,7 +6,7 @@ toc: true
 
 ## Database Connection
 
-Make shure you enter the 4 parameters for the MySQL Connection:
+Make sure you enter the 4 parameters for the MySQL Connection:
 
 * `host`: Most often this is `localhost`, the db host to connect to
 * `database`: Name of the MySQL database
@@ -34,7 +34,9 @@ The api key has to put in the http request as request paramter `api_key`.
 
 ## Maintenance mode
 
-If you want to take the engelsystem down, set this boolean to `true`. The content of `` is then showed to the users. No functions are available then.
+If you want to take the engelsystem down, set this boolean to `true`.
+The content of `resources/views/layouts/maintenance.html` is then showed to the users.
+No functions are available then.
 
 This defaults to environment variable `MAINTENANCE`. If the variable is not present, it defaults to `false`.
 
@@ -64,9 +66,11 @@ This defaults to environment variable `ENVIRONMENT`. If the variable is not pres
 
 ## Footer links
 
-With the footer links configuration you may add more html links to the app footer. This item is an array and the keys are the link name, the value is the url.
+With the footer links configuration you may add more html links to the app footer.
+This item is an array and the keys are the link name, the value is the url.
 
 Look at the default as sample:
+
 ```php
     'footer_items'            => [
         'FAQ'     => 'https://events.ccc.de/congress/2018/wiki/Static:Volunteers',
@@ -207,6 +211,7 @@ Look at the default as sample:
 ```
 
 ## Voucher calculation
+
 ```php
     // Voucher calculation
     'voucher_settings'        => [
@@ -226,12 +231,14 @@ Look at the default as sample:
 ```
 
 ## Default language
+
 ```php
     // The default locale to use
     'default_locale'          => env('DEFAULT_LOCALE', 'en_US.UTF-8'),
 ```
 
 ## Available t-shirt sizes
+
 ```php
     // Available T-Shirt sizes, set value to null if not available
     'tshirt_sizes'            => [
@@ -293,6 +300,4 @@ Look at the default as sample:
             . 'you want to to contribute, have found any [bugs](https://github.com/engelsystem/engelsystem/issues) '
             . 'or need help.'
     ]
-```
-
 ```
