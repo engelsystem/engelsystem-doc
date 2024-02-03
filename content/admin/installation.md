@@ -41,7 +41,7 @@ cp config/config.default.php config/config.php
 
 The first and most important settings are the database connection parameters.
 
-For more details see [configuration]({{< ref "configuration" >}}).
+For more details see [configuration]({{% ref "configuration" %}}).
 
 ## Webserver
 

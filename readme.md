@@ -9,7 +9,10 @@ You can build and server the docs locally using:
 hugo server
 ```
 
+## Clone repo
+Use `git clone --recurse-submodules` to clone the theme submodule.
+
 ## Update theme
 ```bash
-git submodule foreach git pull origin master
+git submodule foreach git pull origin main
 ```

@@ -1,7 +1,7 @@
 baseURL = "https://engelsystem.de/doc/"
 languageCode = "en-us"
 title = "Engelsystem documentation"
-theme = "learn"
+theme = "relearn"
 
 [params]
 themeVariant = "blue"
@@ -11,7 +11,7 @@ titleSeparator = "-"
 disableLandingPageButton = true
 
 [outputs]
-home = [ "HTML", "RSS", "JSON"]
+home = [ "HTML", "RSS", "SEARCH"]
 
 [markup.goldmark.renderer]
   unsafe = true
