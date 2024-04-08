@@ -1,8 +1,10 @@
 ---
 title: "Configuration"
 date: 2019-02-13T19:39:21+01:00
-toc: true
+weight: 20
 ---
+
+For a full list of available configuration options, see your `config/config.default.php` file and its comments.
 
 ## Database Connection
 
@@ -110,8 +112,9 @@ Look at the default as sample:
 ## Available themes
 
 ```php
-    // Available themes
-    'available_themes'        => [
+    // Some available themes
+    'themes'        => [
+        // ...
         '7' => 'Engelsystem 35c3 dark (2018)',
         '6' => 'Engelsystem 34c3 dark (2017)',
         '5' => 'Engelsystem 34c3 light (2017)',
@@ -123,18 +126,11 @@ Look at the default as sample:
     ],
 ```
 
-## URL style
-
-```php
-    // Rewrite URLs with mod_rewrite
-    'rewrite_urls'            => true,
-```
-
 ## News pagination
 
 ```php
     // Number of News shown on one site
-    'display_news'            => 6,
+    'display_news'            => 10,
 ```
 
 ## Allow user registration
@@ -158,16 +154,13 @@ Look at the default as sample:
     'last_unsubscribe'        => 3,
 ```
 
-## Hash algorithm
+## Password algorithm
 
 ```php
-    // Define the algorithm to use for `crypt()` of passwords
+    // Define the algorithm to use for `password_verify()`
     // If the user uses an old algorithm the password will be converted to the new format
-    //  MD5         '$1'
-    //  Blowfish    '$2y$13'
-    //  SHA-256     '$5$rounds=5000'
-    //  SHA-512     '$6$rounds=5000'
-    'crypt_alg'               => '$6$rounds=5000',
+    // See https://secure.php.net/manual/en/password.constants.php for a complete list
+    'password_algorithm'               => PASSWORD_DEFAULT,
 ```
 
 ## Password min. length
@@ -177,11 +170,14 @@ Look at the default as sample:
     'min_password_length'     => 8,
 ```
 
-## Enable t-shirts
+## Enable goodies/t-shirts
 
 ```php
-    // Enables the T-Shirt configuration on signup and profile
-    'enable_tshirt_size'      => true,
+    // Resembles the Goodie Type. There are three options:
+    // 'none' => no goodie at all
+    // 'goodie' => a goodie which has no sizing options
+    // 'tshirt' => goodie that is called tshirt and has sizing options
+    'goodie_type'      => 'tshirt',
 ```
 
 ## Freeloading
@@ -205,7 +201,7 @@ Look at the default as sample:
     'night_shifts'            => [
         'enabled'    => true, // Disable to weigh every shift the same
         'start'      => 2,
-        'end'        => 6,
+        'end'        => 8,
         'multiplier' => 2,
     ],
 ```
@@ -217,6 +213,9 @@ Look at the default as sample:
     'voucher_settings'        => [
         'initial_vouchers'   => 0,
         'shifts_per_voucher' => 1,
+        'hours_per_voucher' => 2,
+        // 'Y-m-d' formatted
+        'voucher_start' => null,
     ],
 ```
 
@@ -266,6 +265,9 @@ Look at the default as sample:
 
         // Cookie name
         'name'   => 'session',
+ 
+        // Lifetime in days
+        'lifetime' => env('SESSION_LIFETIME', 30),
     ],
 ```
 
@@ -281,13 +283,17 @@ Look at the default as sample:
 ```php
     // Add additional headers
     'add_headers'             => (bool)env('ADD_HEADERS', true),
+    // To disable a header in the config.php, you can set its value to null
     'headers'                 => [
         'X-Content-Type-Options'  => 'nosniff',
         'X-Frame-Options'         => 'sameorigin',
         'Referrer-Policy'         => 'strict-origin-when-cross-origin',
-        'Content-Security-Policy' => 'default-src \'self\' \'unsafe-inline\' \'unsafe-eval\'',
+        'Content-Security-Policy' => 'default-src \'self\'; '
+            . ' style-src \'self\' \'unsafe-inline\'; img-src \'self\' data:;',
         'X-XSS-Protection'        => '1; mode=block',
         'Feature-Policy'          => 'autoplay \'none\'',
+        //'Strict-Transport-Security' => 'max-age=7776000',
+        //'Expect-CT' => 'max-age=7776000,enforce,report-uri="[uri]"',
     ],
 ```
 
