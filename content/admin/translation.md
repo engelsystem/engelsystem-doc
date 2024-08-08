@@ -1,6 +1,7 @@
 ---
 title: "Translation"
 date: 2023-03-05T13:37:00+01:00
+weight: 80
 ---
 
 The Engelsystem has translations for German (`de_DE`) and Englisch (`en_US`).
