@@ -5,7 +5,7 @@ lastmod: 2024-04-08T23:50:00+02:00
 weight: 40
 ---
 
-The Engelsystem allows you to assign multiple roles a user.
+The Engelsystem allows you to assign multiple roles to a user.
 A role can have multiple permissions which allow the user to take corresponding actions in the Engelsystem.
 
 You can manage them at `Admin > Grouprights`.
