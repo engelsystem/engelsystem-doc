@@ -6,20 +6,20 @@ weight: 10
 
 ## Requirements
 
-The system requirements of the engelsystem can be found in the repositories
-[readme](https://github.com/engelsystem/engelsystem?tab=readme-ov-file#requirements) file.
+System requirements can be found in the repository's
+[README](https://github.com/engelsystem/engelsystem?tab=readme-ov-file#requirements).
 
 ## Download
 
-How to download the Engelsystem is described in the projects'
-[readme](https://github.com/engelsystem/engelsystem?tab=readme-ov-file#download).
+Download instructions are available in the project's
+[README](https://github.com/engelsystem/engelsystem?tab=readme-ov-file#download).
 
 ## Database
 
-When using a release (you downloaded a release archive), you find an `install.sql` file which can be imported to your
-webserver database through for example your providers phpMyAdmin webinterface.
+If you downloaded a release archive, it includes an `install.sql` file that you can import into your database
+using phpMyAdmin or a similar tool.
 
-If you are using the lastest main branch version you must use the `migrate` script to updates the Engelsystem:
+If you're using the latest main branch, use the `migrate` script to set up or update the database:
 
 ```bash
 bin/migrate up
@@ -29,18 +29,17 @@ bin/migrate up
 
 ### Configuration
 
-It is highly recommended to create a new `config/config.php` file and copy the values that need to be changed over
-from `config/config.default.php`.
+We recommend creating a `config/config.php` file containing only the settings you want to change:
 
 ```bash
 echo '<?php
 return [
-  // New config goes here
+  // Your configuration overrides go here
 ];' > config/config.php
 ```
 
-Alternatively you can also copy the whole `config/config.default.php` to `config/config.php` and edit
-the `config/config.php` file to configure the engelsystem but that might lead to problems with further updates.
+Alternatively, you can copy `config/config.default.php` to `config/config.php` and edit it directly,
+though this may cause issues when upgrading to newer versions.
 
 ```bash
 cp config/config.default.php config/config.php
@@ -58,5 +57,5 @@ For more details see [configuration]({{% ref "configuration" %}}).
 
 ## First login
 
-The Engelsystem installation provides a default user with the credentials `admin` :`asdfasdf`.
-After logging in you should change them!
+The default installation includes an admin account with the credentials `admin` / `asdfasdf`.
+**Change these immediately after logging in!**

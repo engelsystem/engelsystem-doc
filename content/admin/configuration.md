@@ -8,12 +8,12 @@ For a full list of available configuration options, see your `config/config.defa
 
 ## Database Connection
 
-Make sure you enter the 4 parameters for the MySQL Connection:
+Configure the four MySQL connection parameters:
 
-* `host`: Most often this is `localhost`, the db host to connect to
+* `host`: The database host (usually `localhost`)
 * `database`: Name of the MySQL database
-* `username`: Name of the database user, who has select, update, insert and delete privileges on the database
-* `password`: Password of the database user
+* `username`: Database user with SELECT, UPDATE, INSERT, and DELETE privileges
+* `password`: Password for the database user
 
 ```php
     'database'                => [
@@ -26,9 +26,9 @@ Make sure you enter the 4 parameters for the MySQL Connection:
 
 ## API Key
 
-The api key is used to protect access to the engelsystem api. It has no restrictions in lengths or character classes.
+The API key is used to protect access to the Engelsystem API. It has no restrictions on length or character classes.
 
-The api key has to put in the http request as request paramter `api_key`.
+The API key must be included in the HTTP request as the request parameter `api_key`.
 
 ```php
     'api_key'                 => '<your api key here>',
@@ -36,11 +36,10 @@ The api key has to put in the http request as request paramter `api_key`.
 
 ## Maintenance mode
 
-If you want to take the engelsystem down, set this boolean to `true`.
-The content of `resources/views/layouts/maintenance.html` is then showed to the users.
-No functions are available then.
+Set this to `true` to take the Engelsystem offline for maintenance.
+Users will see the content of `resources/views/layouts/maintenance.html` instead of the normal interface.
 
-This defaults to environment variable `MAINTENANCE`. If the variable is not present, it defaults to `false`.
+Defaults to the `MAINTENANCE` environment variable, or `false` if not set.
 
 ```php
     'maintenance'             => false,
@@ -48,9 +47,9 @@ This defaults to environment variable `MAINTENANCE`. If the variable is not pres
 
 ## App name
 
-With app name you may rename the engelsystem to any name you want.
+Customize the application name displayed throughout the interface.
 
-This defaults to environment variable `APP_NAME`. If the variable is not present, it defaults to `Engelsystem`.
+Defaults to the `APP_NAME` environment variable, or `Engelsystem` if not set.
 
 ```php
     'app_name'                => 'Engelsystem',
@@ -58,9 +57,9 @@ This defaults to environment variable `APP_NAME`. If the variable is not present
 
 ## Environment
 
-Can either be set to `production` or `development`. Set to `development` to enable debugging messages.
+Set to `production` or `development`. Use `development` to enable debugging messages.
 
-This defaults to environment variable `ENVIRONMENT`. If the variable is not present, it defaults to `production`.
+Defaults to the `ENVIRONMENT` environment variable, or `production` if not set.
 
 ```php
     'environment'             => 'production',
@@ -68,10 +67,9 @@ This defaults to environment variable `ENVIRONMENT`. If the variable is not pres
 
 ## Footer links
 
-With the footer links configuration you may add more html links to the app footer.
-This item is an array and the keys are the link name, the value is the url.
+Add custom links to the application footer. This is an array where keys are link labels and values are URLs.
 
-Look at the default as sample:
+Example:
 
 ```php
     'footer_items'            => [
@@ -129,7 +127,7 @@ Look at the default as sample:
 ## News pagination
 
 ```php
-    // Number of News shown on one site
+    // Number of News shown on one page
     'display_news'            => 10,
 ```
 
@@ -150,7 +148,7 @@ Look at the default as sample:
 ## Shift unsubscribe timing
 
 ```php
-    // Number of hours that an angel has to sign out own shifts
+    // Minimum hours before a shift starts that an angel can still unsubscribe
     'last_unsubscribe'        => 3,
 ```
 
@@ -194,7 +192,7 @@ Look at the default as sample:
     'timezone'                => env('TIMEZONE', 'Europe/Berlin'),
 ```
 
-## Nighshift bonus
+## Night shift bonus
 
 ```php
     // Multiply 'night shifts' and freeloaded shifts (start or end between 2 and 6 exclusive) by 2

@@ -3,36 +3,33 @@ title: "Request Lifecycle"
 date: 2024-04-08T22:20:00+02:00
 ---
 
-The goal of this overview is to give you a basic understanding of how the Engelsystem handles a request
-and to provide a way to debug problems if they occur.
+This overview explains how the Engelsystem handles HTTP requests, which can help when debugging issues.
 
 ## Bootstrapping
 
-The first entry point for all requests is the `public/index.php` file.
-It should be called by the webserver (nginx, Apache etc.) on all incoming requests that are not files.
+All requests enter through `public/index.php`, which your web server (nginx, Apache, etc.)
+should route to for any URL that doesn't correspond to a static file.
 
-It includes the `includes/engelsystem.php` which itself includes `includes/application.php` for application
-bootstrapping and composer autoloading.
-This also handles a potential active maintenance mode by rendering the corresponding template
-from `resources/views/layouts/maintenance.html` and ending the request.
+This file includes `includes/engelsystem.php`, which in turn loads `includes/application.php`
+for bootstrapping and Composer autoloading. If maintenance mode is active, the template at
+`resources/views/layouts/maintenance.html` is rendered and the request ends.
 
-The application bootstrapping includes loading the application configuration first (`config/app.php`) and
-then bootstrapping any configured providers.
+Bootstrapping loads the application configuration (`config/app.php`) and initializes the configured
+service providers. Service providers initialize all required classes in two phases:
 
-Service Providers handle the initialization of all needed classes (and their instances) by first registering them
-(and calling their `register` method) and afterward calling all provider `boot` methods.
+1. **Register**: Called first for all providers via their `register` method
+2. **Boot**: Called after all providers are registered via their `boot` method
 
-* The `register` step should be used to initialize any functionality. It should not depend on other instances or
-  configuration being available as they might not be loaded at that point.
-* The `boot` step is called after the configuration and all instances have been registered and thus are available.
-  This should be used to configure the state of a service.
+* **Register**: Use this to bind services to the container. Don't rely on other services or configuration
+  being available yet, as they may not be loaded.
+* **Boot**: Called after all services are registered. Use this to configure services that depend on
+  other registered instances.
 
-Service Providers can be broadly differentiated between
+Service providers generally fall into three categories:
 
-* application bootstrapping like logging, exception handling, loading the configuration and its overwritten values,
-  detecting the runtime environment.
-* initializing the request and response handling like session, authentication, validation, translations etc.
-* additional services like providing the version, mailers and others.
+* **Application bootstrapping**: Logging, exception handling, configuration loading, environment detection
+* **Request/response handling**: Session, authentication, validation, translations
+* **Additional services**: Version info, mailers, etc.
 
 ## Dispatching
 
@@ -42,23 +39,26 @@ Request `Dispatcher` which handles the request by applying the middlewares confi
 
 ### Middlewares
 
-Middlewares are used to handle anything that changes the request or response.
-For that they must implement the `MiddlewareInterface`.
-A Middleware can update the request before it is handled by other parts of the application and
-change parts of the response before it is sent to the requesting client.
+Middlewares process requests and responses by implementing `MiddlewareInterface`.
+They can modify the request before it reaches the controller and modify the response before
+it's sent to the client.
 
-Middlewares are used to interpret and set headers, filter the input and verify the csrf token on post requests,
-analyze which route from `config/routes.php` is requested, handle the session and call the `RequestHandler`.
+Middlewares handle tasks like:
+- Setting and interpreting headers
+- Filtering input and verifying CSRF tokens on POST requests
+- Matching routes from `config/routes.php`
+- Managing sessions
+- Invoking the request handler
 
-When the `RouteDispatcher` middleware can't find a matching route it uses the `LegacyMiddleware` to
-resolve any remaining old pages located inside the `includes/` folder.
+If the `RouteDispatcher` middleware can't find a matching route, it falls back to the
+`LegacyMiddleware` to handle legacy pages in the `includes/` folder.
 
 ### Request Handler
 
-The request handler loads the route information to get the controller that should be used to handle a given request.
-It checks for needed permissions (when configured in the controller) and calls the defined callback.
+The request handler determines which controller should handle the request based on route configuration.
+It verifies required permissions (if configured in the controller) and invokes the appropriate callback.
 
 ## Events
 
-Some functionality like sending messages is decoupled from the normal flow by using events.
-A list can be found in the application configuration.
+Some functionality, like sending messages, is decoupled from the main request flow using events.
+Available events are listed in the application configuration.

@@ -5,11 +5,11 @@ weight: 70
 ---
 
 {{% notice warning %}}
-The Engelsystem contains a work in progress **beta** API.
-It might change at any time without further notice but should be "stable" during a CCC event.
+The API is currently in **beta** and may change without notice.
+It should remain stable during CCC events.
 {{% /notice %}}
 
-The API specification can be found [here]({{% ref "api/specification" %}}).
+See the [API specification]({{% ref "api/specification" %}}) for details.
 
-The API is accessible to users in the `API` or ` Bureaucrat` group to allow for testing
-but to not confuse regular users.
+Access is limited to users in the `API` or `Bureaucrat` groups to enable testing
+without exposing it to regular users.
