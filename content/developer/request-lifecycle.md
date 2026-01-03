@@ -21,9 +21,9 @@ service providers. Service providers initialize all required classes in two phas
 2. **Boot**: Called after all providers are registered via their `boot` method
 
 * **Register**: Use this to bind services to the container. Don't rely on other services or configuration
-  being available yet, as they may not be loaded.
+  being available yet, as they may not be (completely) loaded.
 * **Boot**: Called after all services are registered. Use this to configure services that depend on
-  other registered instances.
+  other registered instances. Other services might not be configured yet!
 
 Service providers generally fall into three categories:
 

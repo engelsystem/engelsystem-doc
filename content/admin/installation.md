@@ -16,10 +16,10 @@ Download instructions are available in the project's
 
 ## Database
 
-If you downloaded a release archive, it includes an `install.sql` file that you can import into your database
-using phpMyAdmin or a similar tool.
+If you downloaded a release archive, it includes an `initial-install.sql` file that you can import into your database
+using your web server providers phpMyAdmin webinterface or a similar tool.
 
-If you're using the latest main branch, use the `migrate` script to set up or update the database:
+If you're using the latest main branch, use the `migrate` script to set up and update the database:
 
 ```bash
 bin/migrate up
@@ -29,25 +29,24 @@ bin/migrate up
 
 ### Configuration
 
-We recommend creating a `config/config.php` file containing only the settings you want to change:
+After the initial database [configuration]({{% ref "configuration" %}}) in `config/config.php`
+we recommend changing all other settings using the Engelsystem web interface as setting them in the config file
+may cause issues when upgrading to newer versions.
 
 ```bash
-echo '<?php
+echo "<?php
 return [
-  // Your configuration overrides go here
-];' > config/config.php
+    'database' => [
+        'host' => 'localhost',
+        'database' => 'engelsystem',
+        'username' => 'engelsystem',
+        'password' => '<your password here>',
+    ],
+    // Your configuration overrides could go here
+];" > config/config.php
 ```
 
-Alternatively, you can copy `config/config.default.php` to `config/config.php` and edit it directly,
-though this may cause issues when upgrading to newer versions.
-
-```bash
-cp config/config.default.php config/config.php
-```
-
-The first and most important settings are the database connection parameters.
-
-For more details see [configuration]({{% ref "configuration" %}}).
+For more details see the [configuration]({{% ref "configuration" %}}) page.
 
 ## Webserver
 
