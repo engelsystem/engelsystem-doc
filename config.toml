@@ -2,6 +2,7 @@ baseURL = "https://engelsystem.de/doc/"
 languageCode = "en-us"
 title = "Engelsystem documentation"
 theme = "relearn"
+enableGitInfo = true
 
 [params]
 themeVariant = "blue"
@@ -9,9 +10,10 @@ editURL = "https://github.com/engelsystem/engelsystem-doc/tree/main/content/"
 custom_css = [ "engelsystem.css" ]
 titleSeparator = "-"
 disableLandingPageButton = true
+hideAuthorName = true
 
 [outputs]
-home = [ "HTML", "RSS", "SEARCH"]
+home = [ "HTML", "RSS" ]
 
 [markup.goldmark.renderer]
   unsafe = true
