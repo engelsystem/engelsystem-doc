@@ -6,3 +6,12 @@
     mask: url(angel.svg) no-repeat 50% 50%;
     mask-size: cover;
 }
+
+#R-header-wrapper {
+    padding-top: 1rem;
+}
+
+#R-content-wrapper .icon-icon_angel {
+    width: 1.25em;
+    height: 1.25em;
+}
