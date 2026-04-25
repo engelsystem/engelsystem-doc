@@ -454,7 +454,7 @@ Possible values:
 
 Possible values:
 ```php
-[21,20,19,18,17,16,15,14,13,12,10,9,8,7,6,5,4,3,2,11,0,1]
+[21,20,19,18,17,16,15,14,13,12,10,9,8,7,6,5,4,3,2,22,11,0,1]
 ```
 
 ### Time zone
@@ -664,7 +664,7 @@ Set max number of hours that can be shown at once on shifts overview, 0 means no
 * Default: `8`
 * Required
 
-### Password
+### Use password for registration and login
 * Name: `enable_password`
 * Type: `boolean`
 * Env var: `ENABLE_PASSWORD`
@@ -733,6 +733,15 @@ Possible values:
 * Required
 
 Number of minutes after a JWT must expire, for example max angel type join time
+
+### HTTP request timeout
+* Name: `guzzle_timeout`
+* Type: `number`
+* Env var: `GUZZLE_TIMEOUT`
+* Default: `2`
+* Required
+
+Number of seconds until timeout for requesting external resources, for example schedule data
 
 ### Maintenance mode
 * Name: `maintenance`
