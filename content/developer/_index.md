@@ -13,6 +13,6 @@ and [contributing](https://github.com/engelsystem/engelsystem/blob/main/CONTRIBU
 The codebase is loosely inspired by Laravel and uses several Laravel (Illuminate) components.
 The `main` branch aims to be stable while including the latest features.
 
-New versions are typically released after major CCC events like the Chaos Communication Congress,
-so at least once a year.
+New versions are typically released after major [CCC events](http://events.ccc.de/)
+like the Chaos Communication Congress, so at least once a year.
 External dependencies should be well-maintained and fit their purpose well.
