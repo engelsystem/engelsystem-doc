@@ -58,3 +58,7 @@ For more details see the [configuration]({{% ref "configuration" %}}) page.
 
 The default installation includes an admin account with the credentials `admin` / `asdfasdf`.
 **Change these immediately after logging in!**
+
+## Plugins
+
+See [Plugin docs](../developer/plugins.md).
